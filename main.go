@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/kellydunn/golang-geo"
+	"github.com/go-martini/martini"
 )
 
 type geocodeResult struct {
@@ -17,7 +18,11 @@ type geocodeResult struct {
 }
 
 func main() {
+
+
 	flag.Usage = usage
+	// Adding new option web for web interface
+	webPtr :=flag.Bool("web", false, "web interface of the app")
 	flag.Parse()
 
 	args := flag.Args()
@@ -40,6 +45,7 @@ const usageTemplate = `Geodude is a tiny command-line utility for geocoding addr
 Usage:
 
   geodude [address]
+  geodude -web 
 
 `
 
